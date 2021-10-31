@@ -53,7 +53,9 @@ nav{
 }
 
 .products{
-    padding-top: 80px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 footer{
@@ -63,7 +65,7 @@ footer{
     border-top: 2px solid black;
     text-align: center;
     margin-top:-40px;
-
+    background-color: white;
 }
 
 footer p{

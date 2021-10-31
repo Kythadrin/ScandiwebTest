@@ -33,12 +33,10 @@
 <!--Header end-->
 
 <!--Content-->
-<div class="container">
-    <div class="products row">
-        <?php
-            $db->printProducts();
-        ?>
-    </div>
+<div class="products row">
+    <?php
+        $db->printProducts();
+    ?>
 </div>
 <!--Content end-->
 

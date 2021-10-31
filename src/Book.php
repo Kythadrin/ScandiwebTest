@@ -36,18 +36,18 @@ class Book extends Product
 
     public function saveToDatabase($connection)
     {
-        $result = mysqli_query($connection, "SELECT * FROM scandiweb.product WHERE Sku = '".$this->getSku()."'");
+        $result = mysqli_query($connection, "SELECT * FROM product WHERE Sku = '".$this->getSku()."'");
 
         if(!$result->fetch_assoc())
         {
-            mysqli_query($connection, "INSERT INTO scandiweb.product (Sku, Name, Price, Type, Attribute) 
+            mysqli_query($connection, "INSERT INTO product (Sku, Name, Price, Type, Attribute) 
                     VALUES ('".$this->getSku()."', '".$this->getName()."', '".$this->getPrice()."', 
                     '".$this->getType()."', '".$this->getWeight()."')");
         }
         else
         {
-            echo 'Product is already exist';
-            exit();
+            header("Location: index.php");
+            exit;
         }
     }
 }

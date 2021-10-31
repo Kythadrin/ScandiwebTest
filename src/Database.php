@@ -30,28 +30,22 @@ class Database
 
     public function deleteProducts()
     {
-/*        $result = mysqli_query($this->getConnection(), "SELECT * FROM scandiweb.product WHERE Sku = '".$productSku."'");
-
-        if(!$result->fetch_assoc())
+        if(array_key_exists('checkbox', $_POST))
         {
-            echo "Product not founded";
-        }
-        else
-        {
-            mysqli_query($this->getConnection(), "DELETE FROM scandiweb.product WHERE Sku = '".$productSku."'");
-        }*/
-        $rowCount = count($_POST['checkbox']);
+            $rowCount = count($_POST['checkbox']);
 
-        for($i = 0; $i < $rowCount; $i++){
-            mysqli_query($this->getConnection(),"DELETE FROM scandiweb.product WHERE Sku='".$_POST["checkbox"][$i]."'");
+            for($i = 0; $i < $rowCount; $i++)
+            {
+                mysqli_query($this->getConnection(),"DELETE FROM product WHERE Sku='".$_POST["checkbox"][$i]."'");
+            }
         }
+
         header('location: index.php');
     }
 
     public function addProduct()
     {
         $product = new $_POST['type']();
-        $data = [];
         $product->setData($_POST);
         $product->saveToDatabase($this->getConnection());
         header("Location: index.php");
@@ -61,7 +55,7 @@ class Database
     public function getBooks(): array
     {
         $booksArray = [];
-        $result = mysqli_query($this->getConnection(), "SELECT * FROM scandiweb.product WHERE Type = 'Book'");
+        $result = mysqli_query($this->getConnection(), "SELECT * FROM product WHERE Type = 'Book'");
 
         while($row = $result->fetch_assoc())
         {
@@ -76,7 +70,7 @@ class Database
     public function getDvds(): array
     {
         $dvdArray = [];
-        $result = mysqli_query($this->getConnection(), "SELECT * FROM scandiweb.product WHERE Type = 'DVD'");
+        $result = mysqli_query($this->getConnection(), "SELECT * FROM product WHERE Type = 'DVD'");
 
         while($row = $result->fetch_assoc())
         {
@@ -91,7 +85,7 @@ class Database
     public function getFurniture(): array
     {
         $furnitureArray = [];
-        $result = mysqli_query($this->getConnection(), "SELECT * FROM scandiweb.product WHERE Type = 'Furniture'");
+        $result = mysqli_query($this->getConnection(), "SELECT * FROM product WHERE Type = 'Furniture'");
 
         while($row = $result->fetch_assoc())
         {
@@ -113,7 +107,7 @@ class Database
                 <h1 class="text-center">'.$book->getType().'</h1>
                 <p>SKU: '.$book->getSku().'<br>
                 Name: '.$book->getName().'<br>
-                Price: '.$book->getPrice().' $<br>
+                Price: '.number_format($book->getPrice(), 2, '.', '').' $<br>
                 Weight: '.$book->getWeight().'KG</p>
             </div>';
         }
@@ -126,7 +120,7 @@ class Database
                 <h1 class="text-center">'.$dvd->getType().'</h1>
                 <p>SKU: '.$dvd->getSku().'<br>
                 Name: '.$dvd->getName().'<br>
-                Price: '.$dvd->getPrice().' $<br>
+                Price: '.number_format($dvd->getPrice(), 2, '.', '').' $<br>
                 Size: '.$dvd->getSize().' MB</p>
             </div>';
         }
@@ -139,7 +133,7 @@ class Database
                 <h1 class="text-center">'.$furniture->getType().'</h1>
                 <p>SKU: '.$furniture->getSku().'<br>
                 Name: '.$furniture->getName().'<br>
-                Price: '.$furniture->getPrice().' $<br>
+                Price: '.number_format($furniture->getPrice(), 2, '.', '').' $<br>
                 Dimension: '.$furniture->getHeight().'x'.$furniture->getWidth().'x'.$furniture->getLength().'</p>
             </div>';
         }
@@ -148,7 +142,7 @@ class Database
     public function getTypes(): array
     {
         $typeArray = [];
-        $result = mysqli_query($this->getConnection(), "SELECT * FROM scandiweb.product_type");
+        $result = mysqli_query($this->getConnection(), "SELECT * FROM product_type");
 
         while($row = $result->fetch_assoc())
         {

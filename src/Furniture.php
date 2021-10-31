@@ -59,22 +59,22 @@ class Furniture extends Product
             $this->setWidth($arr['Width']);
             $this->setLength($arr['Length']);
         }
-
     }
 
     public function saveToDatabase($connection)
     {
-        $result = mysqli_query($connection, "SELECT * FROM scandiweb.product WHERE Sku = '".$this->getSku()."'");
+        $result = mysqli_query($connection, "SELECT * FROM product WHERE Sku = '".$this->getSku()."'");
 
         if(!$result->fetch_assoc())
         {
-            mysqli_query($connection, "INSERT INTO scandiweb.product (Sku, Name, Price, Type, Attribute) 
-                    VALUES ('".$this->getSku()."', '".$this->getName()."', '".$this->getPrice()."', '".$this->getType()."',
-                        '".$this->getHeight()."' + 'x' + '".$this->getWidth()."' + 'x' + '".$this->getLength()."')");
+            mysqli_query($connection, "INSERT INTO product (Sku, Name, Price, Type, Attribute) 
+                    VALUES ('".$this->getSku()."', '".$this->getName()."', 
+                    '".number_format($this->getPrice(), 2, '.', '')."', 
+                    '".$this->getType()."','".$this->getHeight()."x".$this->getWidth()."x".$this->getLength()."')");
         }
         else
         {
-            echo 'Product is already exist';
+            header("Location: index.php");
             exit();
         }
     }
