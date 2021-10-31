@@ -1,36 +1,51 @@
+<?php
+    require_once 'src/Database.php';
+    $db = new Database();
+
+    if(isset($_POST['delete_btn']))
+    {
+        $db->deleteProducts();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>See products</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-reboot.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/bootstrap.bundle.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="js/switcher.js"></script>
+    <title>Product list</title>
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-expand-sm">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <h3 class="m-1">Product List</h3>
-            </li>
-        </ul>
-            <div class="btn-group">
-                <select id="type" class="text-dark btn btn-light border-secondary" form="form" name="option" required="required">
-                    <option value="" selected>Select option</option>
-                    <option value="mass delete">Mass delete</option>
-                <input type="submit" form="form" class="btn btn-primary" value="Apply">
-                <a class="btn btn-primary" href="add.php" role="button">Add new</a>
-            </div>
-    </nav>
-</header>
-<form id="form" action="edit.php" method="post">
-    <div class="d-flex flex-wrap">
-
+<!--Header-->
+<nav class="navbar">
+    <div class="navbar-brand">Product List</div>
+    <div class="buttons">
+        <a href="add_product.php"><div class="btn btn-success">ADD</div></a>
+        <form action="index.php" id="delete_form" method="POST">
+            <button class="btn btn-danger" type="submit" name="delete_btn">MASS DELETE</button>
+        </form>
     </div>
-</form>
+</nav>
+<!--Header end-->
+
+<!--Content-->
+<div class="container">
+    <div class="products row">
+        <?php
+            $db->printProducts();
+        ?>
+    </div>
+</div>
+<!--Content end-->
+
+<!--Footer-->
+<footer class="footer fixed-bottom">
+    <p>Scandiweb Test assignment</p>
+</footer>
+<!--Footer end-->
 </body>
 </html>

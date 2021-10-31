@@ -1,0 +1,83 @@
+body,html {
+    height:100%;
+}
+
+nav{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 2px solid black;
+    padding: 0 15px 0 15px;
+    margin-bottom: 100px;
+}
+
+.buttons{
+    display: flex;
+}
+
+.buttons .btn{
+    margin: 0 20px 0 20px;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+.navbar-brand{
+    color: black;
+    font-size: 40px;
+}
+
+.product{
+    position: relative;
+}
+
+.product input{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+#product_form{
+    margin-left: 10%;
+}
+
+#product_form button{
+    margin-left: 40%;
+    margin-right: 30%;
+}
+
+.content{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.products{
+    padding-top: 80px;
+}
+
+footer{
+    width: 95%;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    border-top: 2px solid black;
+    text-align: center;
+    margin-top:-40px;
+
+}
+
+footer p{
+    margin-top: 25px;
+}
+
+.product{
+    width: 250px;
+    height: 200px;
+    border: 2px black solid;
+    border-radius: 8px;
+    padding: 25px;
+    margin-right: 100px;
+    margin-bottom: 70px;
+    background-color: #efefef;
+    text-align: center;
+}

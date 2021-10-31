@@ -1,19 +1,53 @@
 <?php
 
-class Book extends Product{
+class Book extends Product
+{
     private $Weight;
 
-    public function __construct($sku, $name, $price, $weight){
-        $this->Sku = $sku;
-        $this->Name = $name;
-        $this->Price = $price;
-        $this->Type = "Book";
+    public function __construct()
+    {
+        $this->setType("Book");
+    }
+
+    public function getWeight()
+    {
+        return $this->Weight;
+    }
+
+    public function setWeight($weight)
+    {
         $this->Weight = $weight;
     }
 
-    public function save($connection): string
+    public function setData($arr)
     {
-        return "INSERT INTO Product (Sku, Name, Price, Type, Attribute) 
-                    VALUES ('$this->Sku', '$this->Name', '$this->Price', '$this->Type', '$this->Weight')";
+        $this->setSku($arr['Sku']);
+        $this->setName($arr['Name']);
+        $this->setPrice($arr['Price']);
+        if(array_key_exists('Attribute', $arr))
+        {
+            $this->setWeight($arr['Attribute']);
+        }
+        if(array_key_exists('Weight', $arr))
+        {
+            $this->setWeight($arr['Weight']);
+        }
+    }
+
+    public function saveToDatabase($connection)
+    {
+        $result = mysqli_query($connection, "SELECT * FROM scandiweb.product WHERE Sku = '".$this->getSku()."'");
+
+        if(!$result->fetch_assoc())
+        {
+            mysqli_query($connection, "INSERT INTO scandiweb.product (Sku, Name, Price, Type, Attribute) 
+                    VALUES ('".$this->getSku()."', '".$this->getName()."', '".$this->getPrice()."', 
+                    '".$this->getType()."', '".$this->getWeight()."')");
+        }
+        else
+        {
+            echo 'Product is already exist';
+            exit();
+        }
     }
 }

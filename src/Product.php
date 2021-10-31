@@ -2,29 +2,51 @@
 
 abstract class Product
 {
-    protected $Sku;
-    protected $Name;
-    protected $Price;
-    protected $Type;
+    public $Sku;
+    public $Name;
+    public $Price;
+    public $Type;
 
-    public function __construct($sku, $name, $price, $type){
+    public function getSku()
+    {
+        return $this->Sku;
+    }
+
+    public function setSku($sku)
+    {
         $this->Sku = $sku;
+    }
+
+    public function getName()
+    {
+        return $this->Name;
+    }
+
+    public function setName($name)
+    {
         $this->Name = $name;
+    }
+
+    public function getPrice()
+    {
+        return $this->Price;
+    }
+
+    public function setPrice($price)
+    {
         $this->Price = $price;
+    }
+
+    public function getType()
+    {
+        return $this->Type;
+    }
+
+    public function setType($type)
+    {
         $this->Type = $type;
     }
 
-    public function __get($name){
-        if(property_exists($this, $name)){
-            return $this->$name;
-        }
-    }
-
-    public function __set($name, $value){
-        if(property_exists($this, $name)) {
-            $this->$name = $value;
-        }
-    }
-
-    abstract public function save($connection) : string;
+    abstract protected function setData($arr);
+    abstract protected function saveToDatabase($connection);
 }

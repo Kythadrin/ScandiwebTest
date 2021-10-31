@@ -1,24 +1,81 @@
 <?php
 
-class Furniture extends Product{
+class Furniture extends Product
+{
     private $Height;
     private $Width;
     private $Length;
 
-    public function __construct($sku, $name, $price, $height, $width, $length){
-        $this->Sku = $sku;
-        $this->Name = $name;
-        $this->Price = $price;
-        $this->Type = "Furniture";
+    public function __construct()
+    {
+        $this->setType("Furniture");
+    }
+
+    public function getHeight()
+    {
+        return $this->Height;
+    }
+
+    public function setHeight($height)
+    {
         $this->Height = $height;
+    }
+
+    public function getWidth()
+    {
+        return $this->Width;
+    }
+
+    public function setWidth($width)
+    {
         $this->Width = $width;
+    }
+
+    public function getLength()
+    {
+        return $this->Length;
+    }
+
+    public function setLength($length)
+    {
         $this->Length = $length;
     }
 
-    public function save($connection): string
+    public function setData($arr)
     {
-        return "INSERT INTO Product (Sku, Name, Price, Type, Attribute) 
-                    VALUES ('$this->Sku', '$this->Name', '$this->Price', '$this->Type', 
-                                '$this->Height' + 'x' + '$this->Width' + 'x' + '$this->Length')";
+        $this->setSku($arr['Sku']);
+        $this->setName($arr['Name']);
+        $this->setPrice($arr['Price']);
+        if(array_key_exists('Attribute', $arr))
+        {
+            $attributes = explode("x", $arr['Attribute']);
+            $this->setHeight($attributes[0]);
+            $this->setWidth($attributes[1]);
+            $this->setLength($attributes[2]);
+        }
+        if(array_key_exists('Height', $arr))
+        {
+            $this->setHeight($arr['Height']);
+            $this->setWidth($arr['Width']);
+            $this->setLength($arr['Length']);
+        }
+
+    }
+
+    public function saveToDatabase($connection)
+    {
+        $result = mysqli_query($connection, "SELECT * FROM scandiweb.product WHERE Sku = '".$this->getSku()."'");
+
+        if(!$result->fetch_assoc())
+        {
+            mysqli_query($connection, "INSERT INTO scandiweb.product (Sku, Name, Price, Type, Attribute) 
+                    VALUES ('".$this->getSku()."', '".$this->getName()."', '".$this->getPrice()."', '".$this->getType()."',
+                        '".$this->getHeight()."' + 'x' + '".$this->getWidth()."' + 'x' + '".$this->getLength()."')");
+        }
+        else
+        {
+            echo 'Product is already exist';
+            exit();
+        }
     }
 }
