@@ -28,16 +28,6 @@ nav{
     font-size: 40px;
 }
 
-.product{
-    position: relative;
-}
-
-.product input{
-    position: absolute;
-    left: 10px;
-    top: 10px;
-}
-
 #product_form{
     margin-left: 10%;
 }
@@ -58,6 +48,28 @@ nav{
     margin-right: auto;
 }
 
+.product{
+    width: 250px;
+    height: 180px;
+    border: 2px black solid;
+    border-radius: 8px;
+    padding: 25px;
+    margin-right: 100px;
+    margin-bottom: 70px;
+    background-color: #efefef;
+    text-align: center;
+}
+
+.product{
+    position: relative;
+}
+
+.product input{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
 footer{
     width: 95%;
     margin-right: 2.5%;
@@ -70,16 +82,4 @@ footer{
 
 footer p{
     margin-top: 25px;
-}
-
-.product{
-    width: 250px;
-    height: 200px;
-    border: 2px black solid;
-    border-radius: 8px;
-    padding: 25px;
-    margin-right: 100px;
-    margin-bottom: 70px;
-    background-color: #efefef;
-    text-align: center;
 }

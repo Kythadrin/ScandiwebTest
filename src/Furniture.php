@@ -46,15 +46,13 @@ class Furniture extends Product
         $this->setSku($arr['Sku']);
         $this->setName($arr['Name']);
         $this->setPrice($arr['Price']);
-        if(array_key_exists('Attribute', $arr))
-        {
+
+        if (array_key_exists('Attribute', $arr)) {
             $attributes = explode("x", $arr['Attribute']);
             $this->setHeight($attributes[0]);
             $this->setWidth($attributes[1]);
             $this->setLength($attributes[2]);
-        }
-        if(array_key_exists('Height', $arr))
-        {
+        } elseif (array_key_exists('Height', $arr)) {
             $this->setHeight($arr['Height']);
             $this->setWidth($arr['Width']);
             $this->setLength($arr['Length']);
@@ -65,15 +63,12 @@ class Furniture extends Product
     {
         $result = mysqli_query($connection, "SELECT * FROM product WHERE Sku = '".$this->getSku()."'");
 
-        if(!$result->fetch_assoc())
-        {
+        if (!$result->fetch_assoc()) {
             mysqli_query($connection, "INSERT INTO product (Sku, Name, Price, Type, Attribute) 
                     VALUES ('".$this->getSku()."', '".$this->getName()."', 
                     '".number_format($this->getPrice(), 2, '.', '')."', 
                     '".$this->getType()."','".$this->getHeight()."x".$this->getWidth()."x".$this->getLength()."')");
-        }
-        else
-        {
+        } else {
             header("Location: index.php");
             exit();
         }

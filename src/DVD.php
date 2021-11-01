@@ -24,12 +24,10 @@ class DVD extends Product
         $this->setSku($arr['Sku']);
         $this->setName($arr['Name']);
         $this->setPrice($arr['Price']);
-        if(array_key_exists('Attribute', $arr))
-        {
+
+        if (array_key_exists('Attribute', $arr)) {
             $this->setSize($arr['Attribute']);
-        }
-        if(array_key_exists('Size', $arr))
-        {
+        } elseif (array_key_exists('Size', $arr)) {
             $this->setSize($arr['Size']);
         }
     }
@@ -38,14 +36,11 @@ class DVD extends Product
     {
         $result = mysqli_query($connection, "SELECT * FROM product WHERE Sku = '".$this->getSku()."'");
 
-        if(!$result->fetch_assoc())
-        {
+        if (!$result->fetch_assoc()) {
             mysqli_query($connection, "INSERT INTO product (Sku, Name, Price, Type, Attribute) 
                     VALUES ('".$this->getSku()."', '".$this->getName()."', '".$this->getPrice()."', 
                     '".$this->getType()."', '".$this->getSize()."')");
-        }
-        else
-        {
+        } else {
             header("Location: index.php");
             exit();
         }
