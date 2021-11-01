@@ -40,7 +40,7 @@
                     <label for="sku">SKU</label>
                 </div>
                 <div class="col">
-                    <input type="text" id="sku" name="Sku" class="form-control" required maxlength="9" minlength="9">
+                    <input type="text" id="sku" name="Sku" class="form-control" required maxlength="10" minlength="10">
                 </div>
             </div>
             <div class="form-group row">

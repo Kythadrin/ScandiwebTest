@@ -2,7 +2,7 @@ body,html {
     height:100%;
 }
 
-nav{
+nav {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
@@ -11,45 +11,46 @@ nav{
     margin-bottom: 100px;
 }
 
-.buttons{
+.buttons {
     display: flex;
 }
 
-.buttons .btn{
+.buttons .btn {
     margin: 0 20px 0 20px;
 }
 
-.form-group{
+.form-group {
     margin-bottom: 20px;
 }
 
-.navbar-brand{
+.navbar-brand {
     color: black;
     font-size: 40px;
 }
 
-#product_form{
+#product_form {
     margin-left: 10%;
 }
 
-#product_form button{
+#product_form button {
     margin-left: 40%;
     margin-right: 30%;
 }
 
-.content{
+.content {
     margin-right: auto;
     margin-left: auto;
 }
 
-.products{
+.products {
     width: 75%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.product{
-    width: 250px;
+.product {
+    position: relative;
+    width: 260px;
     height: 180px;
     border: 2px black solid;
     border-radius: 8px;
@@ -60,17 +61,17 @@ nav{
     text-align: center;
 }
 
-.product{
-    position: relative;
+.product p {
+    margin: 0;
 }
 
-.product input{
+.product input {
     position: absolute;
     left: 10px;
     top: 10px;
 }
 
-footer{
+footer {
     width: 95%;
     margin-right: 2.5%;
     margin-left: 2.5%;
@@ -80,6 +81,6 @@ footer{
     background-color: white;
 }
 
-footer p{
+footer p {
     margin-top: 25px;
 }

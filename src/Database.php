@@ -98,10 +98,10 @@ class Database
             echo '
             <div class="product">
                 <input type="checkbox" class="delete-checkbox" name="checkbox[]" value="'.$book->getSku().'" form="delete_form">
-                <p>'.$book->getSku().'<br>
-                '.$book->getName().'<br>
-                '.number_format($book->getPrice(), 2, '.', '').' $<br>
-                Weight: '.$book->getWeight().'KG</p>
+                <p>'.$book->getSku().'</p>
+                <p>'.$book->getName().'</p>
+                <p>'.number_format($book->getPrice(), 2, '.', '').' $</p>
+                <p>Weight: '.$book->getWeight().'KG</p>
             </div>';
         }
 
@@ -109,10 +109,10 @@ class Database
             echo '
             <div class="product">
                 <input type="checkbox" class="delete-checkbox" name="checkbox[]" value="'.$dvd->getSku().'" form="delete_form">
-                <p>'.$dvd->getSku().'<br>
-                '.$dvd->getName().'<br>
-                '.number_format($dvd->getPrice(), 2, '.', '').' $<br>
-                Size: '.$dvd->getSize().' MB</p>
+                <p>'.$dvd->getSku().'</p>
+                <p>'.$dvd->getName().'</p>
+                <p>'.number_format($dvd->getPrice(), 2, '.', '').' $</p>
+                <p>Size: '.$dvd->getSize().' MB</p>
             </div>';
         }
 
@@ -120,10 +120,10 @@ class Database
             echo '
              <div class="product">
                 <input type="checkbox" class="delete-checkbox" name="checkbox[]" value="'.$furniture->getSku().'" form="delete_form">
-                <p>'.$furniture->getSku().'<br>
-                '.$furniture->getName().'<br>
-                '.number_format($furniture->getPrice(), 2, '.', '').' $<br>
-                Dimension: '.$furniture->getHeight().'x'.$furniture->getWidth().'x'.$furniture->getLength().'</p>
+                <p>'.$furniture->getSku().'</p>
+                <p>'.$furniture->getName().'</p>
+                <p>'.number_format($furniture->getPrice(), 2, '.', '').' $</p>
+                <p>Dimension: '.$furniture->getHeight().'x'.$furniture->getWidth().'x'.$furniture->getLength().'</p>
             </div>';
         }
     }
