@@ -1,10 +1,19 @@
 <?php
-    require_once 'src/Database.php';
+    require_once 'Model/Database.php';
+    require_once 'Controller/BookController.php';
+    require_once 'Controller/DvdController.php';
+    require_once 'Controller/FurnitureController.php';
+    require_once 'Controller/ProductController.php';
+
     $db = new Database();
+    $bc = new BookController($db);
+    $dc = new DvdController($db);
+    $fc = new FurnitureController($db);
+    $pc = new ProductController($db);
 
     if(isset($_POST['delete_btn']))
     {
-        $db->deleteProducts();
+        $pc->deleteProducts();
     }
 ?>
 <!DOCTYPE html>
@@ -15,7 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="./css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <script src="js/switcher.js"></script>
     <title>Product list</title>
 </head>
@@ -35,7 +44,7 @@
 <!--Content-->
 <div class="products row">
     <?php
-        $db->printProducts();
+        $pc->printProducts($bc, $dc, $fc);
     ?>
 </div>
 <!--Content end-->
