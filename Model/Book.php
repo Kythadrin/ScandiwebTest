@@ -32,7 +32,7 @@ class Book extends Product
         }
     }
 
-    public function saveToDatabase($connection)
+    public function saveToDatabase($connection): bool
     {
         $result = mysqli_query($connection, "SELECT * FROM product WHERE Sku = '".$this->getSku()."'");
 
@@ -40,9 +40,9 @@ class Book extends Product
             mysqli_query($connection, "INSERT INTO product (Sku, Name, Price, Type, Attribute) 
                     VALUES ('".$this->getSku()."', '".$this->getName()."', '".$this->getPrice()."', 
                     '".$this->getType()."', '".$this->getWeight()."')");
+            return true;
         } else {
-            header("Location: index.php");
-            exit;
+            return false;
         }
     }
 }

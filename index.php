@@ -6,14 +6,14 @@
     require_once 'Controller/ProductController.php';
 
     $db = new Database();
-    $bc = new BookController($db);
-    $dc = new DvdController($db);
-    $fc = new FurnitureController($db);
-    $pc = new ProductController($db);
+    $bookController = new BookController($db);
+    $dvdController = new DvdController($db);
+    $furnitureController = new FurnitureController($db);
+    $productController = new ProductController($db);
 
     if(isset($_POST['delete_btn']))
     {
-        $pc->deleteProducts();
+        $productController->deleteProducts();
     }
 ?>
 <!DOCTYPE html>
@@ -44,7 +44,7 @@
 <!--Content-->
 <div class="products row">
     <?php
-        $pc->printProducts($bc, $dc, $fc);
+        $productController->printProducts($bookController, $dvdController, $furnitureController);
     ?>
 </div>
 <!--Content end-->

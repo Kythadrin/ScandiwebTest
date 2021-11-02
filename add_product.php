@@ -4,12 +4,12 @@
     require_once 'Controller/TypeController.php';
 
     $db = new Database();
-    $pc = new ProductController($db);
-    $tc = new TypeController($db);
+    $productController = new ProductController($db);
+    $typeController = new TypeController($db);
 
     if(isset($_POST['Submit']))
     {
-        $pc->addProduct();
+        $productController->addProduct();
     }
 ?>
 <!DOCTYPE html>
@@ -70,7 +70,7 @@
                 <div class="col">
                     <select class="form-select" onchange="change_type(this.value)" id="productType" name="type" style="margin-bottom: 10px;" required>
                         <option selected></option>
-                        <?php $tc->displayTypes(); ?>
+                        <?php $typeController->displayTypes(); ?>
                     </select>
                 </div>
             </div>

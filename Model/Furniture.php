@@ -68,9 +68,9 @@ class Furniture extends Product
                     VALUES ('".$this->getSku()."', '".$this->getName()."', 
                     '".number_format($this->getPrice(), 2, '.', '')."', 
                     '".$this->getType()."','".$this->getHeight()."x".$this->getWidth()."x".$this->getLength()."')");
+            return true;
         } else {
-            header("Location: index.php");
-            exit();
+            return false;
         }
     }
 }

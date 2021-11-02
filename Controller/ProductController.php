@@ -28,14 +28,16 @@ class ProductController
     {
         $product = new $_POST['type']();
         $product->setData($_POST);
-        $product->saveToDatabase($this->db->getConnection());
-        header("Location: index.php");
-        exit;
+        if ($product->saveToDatabase($this->db->getConnection())) {
+            header('Location: index.php');
+        } else {
+            echo '<div class="error">Product with this SKU already exist!</div>';
+        }
     }
 
-    public function printProducts($bc, $dc, $tc)
+    public function printProducts($bookController, $dvdController, $furnitureController)
     {
-        foreach ($bc->getBooks() as $book) {
+        foreach ($bookController->getBooks() as $book) {
             echo '
             <div class="product">
                 <input type="checkbox" class="delete-checkbox" name="checkbox[]" value="'.$book->getSku().'" form="delete_form">
@@ -46,7 +48,7 @@ class ProductController
             </div>';
         }
 
-        foreach ($dc->getDvds() as $dvd) {
+        foreach ($dvdController->getDvds() as $dvd) {
             echo '
             <div class="product">
                 <input type="checkbox" class="delete-checkbox" name="checkbox[]" value="'.$dvd->getSku().'" form="delete_form">
@@ -57,7 +59,7 @@ class ProductController
             </div>';
         }
 
-        foreach ($tc->getFurniture() as $furniture) {
+        foreach ($furnitureController->getFurniture() as $furniture) {
             echo '
              <div class="product">
                 <input type="checkbox" class="delete-checkbox" name="checkbox[]" value="'.$furniture->getSku().'" form="delete_form">

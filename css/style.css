@@ -71,6 +71,14 @@ nav {
     top: 10px;
 }
 
+.error {
+    position: absolute;
+    top: 130px;
+    left: 150px;
+    color: red;
+    font-size: 20px;
+}
+
 footer {
     width: 95%;
     margin-right: 2.5%;
