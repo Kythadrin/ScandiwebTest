@@ -2,15 +2,15 @@
 
 class Type
 {
-    private $Name;
+    private $name;
 
     public function setName($name)
     {
-        $this->Name = $name;
+        $this->name = $name;
     }
 
     public function getName()
     {
-        return $this->Name;
+        return $this->name;
     }
 }

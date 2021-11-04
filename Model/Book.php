@@ -2,7 +2,7 @@
 
 class Book extends Product
 {
-    private $Weight;
+    private $weight;
 
     public function __construct()
     {
@@ -11,12 +11,12 @@ class Book extends Product
 
     public function getWeight()
     {
-        return $this->Weight;
+        return $this->weight;
     }
 
     public function setWeight($weight)
     {
-        $this->Weight = $weight;
+        $this->weight = $weight;
     }
 
     public function setData($arr)

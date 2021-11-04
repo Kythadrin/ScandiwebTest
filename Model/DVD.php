@@ -2,7 +2,7 @@
 
 class DVD extends Product
 {
-    private $Size;
+    private $size;
 
     public function __construct()
     {
@@ -11,12 +11,12 @@ class DVD extends Product
 
     public function getSize()
     {
-        return $this->Size;
+        return $this->size;
     }
 
     public function setSize($size)
     {
-        $this->Size = $size;
+        $this->size = $size;
     }
 
     public function setData($arr)

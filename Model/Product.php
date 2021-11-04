@@ -2,49 +2,49 @@
 
 abstract class Product
 {
-    public $Sku;
-    public $Name;
-    public $Price;
-    public $Type;
+    public $sku;
+    public $name;
+    public $price;
+    public $type;
 
     public function getSku()
     {
-        return $this->Sku;
+        return $this->sku;
     }
 
     public function setSku($sku)
     {
-        $this->Sku = $sku;
+        $this->sku = $sku;
     }
 
     public function getName()
     {
-        return $this->Name;
+        return $this->name;
     }
 
     public function setName($name)
     {
-        $this->Name = $name;
+        $this->name = $name;
     }
 
     public function getPrice()
     {
-        return $this->Price;
+        return $this->price;
     }
 
     public function setPrice($price)
     {
-        $this->Price = $price;
+        $this->price = $price;
     }
 
     public function getType()
     {
-        return $this->Type;
+        return $this->type;
     }
 
     public function setType($type)
     {
-        $this->Type = $type;
+        $this->type = $type;
     }
 
     abstract protected function setData($arr);

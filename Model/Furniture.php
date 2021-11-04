@@ -2,9 +2,9 @@
 
 class Furniture extends Product
 {
-    private $Height;
-    private $Width;
-    private $Length;
+    private $height;
+    private $width;
+    private $length;
 
     public function __construct()
     {
@@ -13,32 +13,32 @@ class Furniture extends Product
 
     public function getHeight()
     {
-        return $this->Height;
+        return $this->height;
     }
 
     public function setHeight($height)
     {
-        $this->Height = $height;
+        $this->height = $height;
     }
 
     public function getWidth()
     {
-        return $this->Width;
+        return $this->width;
     }
 
     public function setWidth($width)
     {
-        $this->Width = $width;
+        $this->width = $width;
     }
 
     public function getLength()
     {
-        return $this->Length;
+        return $this->length;
     }
 
     public function setLength($length)
     {
-        $this->Length = $length;
+        $this->length = $length;
     }
 
     public function setData($arr)
@@ -59,7 +59,7 @@ class Furniture extends Product
         }
     }
 
-    public function saveToDatabase($connection)
+    public function saveToDatabase($connection): bool
     {
         $result = mysqli_query($connection, "SELECT * FROM product WHERE Sku = '".$this->getSku()."'");
 

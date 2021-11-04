@@ -28,6 +28,7 @@ class ProductController
     {
         $product = new $_POST['type']();
         $product->setData($_POST);
+
         if ($product->saveToDatabase($this->db->getConnection())) {
             header('Location: index.php');
         } else {
